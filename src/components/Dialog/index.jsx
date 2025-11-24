@@ -1,28 +1,41 @@
 import './dialog.style.css';
+import { useEffect, useRef } from 'react';
 
-export function Dialog() {
+export function Dialog({ isOpen, onClose, children }) {
 
-    const dialog = document.querySelector("dialog");
-    const showButton = document.querySelector("dialog + button");
-    const closeButton = document.querySelector("dialog button");
+    const dialogRef = useRef(null);
 
-    // "Show the dialog" button opens the dialog modally
-    showButton.addEventListener("click", () => {
-        dialog.showModal();
-    });
+    useEffect(() => {
+        console.log('Abrir dialog', isOpen);
+        if (isOpen) {
+            openDialog();
+        } else {
+            closeDialog();
+        }
+    }, [isOpen, onClose]);
 
-    // "Close" button closes the dialog
-    closeButton.addEventListener("click", () => {
-        dialog.close();
-    });
+    const openDialog = () => {
+        dialogRef.current.showModal();
+    };
+
+    const closeDialog = () => {
+        dialogRef.current.close();
+    };
 
     return (
         <>
-            <dialog>
-                <button autofocus>Close</button>
-                <p>This modal dialog has a groovy backdrop!</p>
+            <dialog ref={dialogRef} className="dialog">
+                <div className='btn-close-wrapper'>
+                    <button
+                        autoFocus
+                        onClick={onClose}
+                        className='btn-close'
+                    >
+                        <IconClose />
+                    </button>
+                </div>
+                {children}
             </dialog>
-            <button>Show the dialog</button>
         </>
     )
 }

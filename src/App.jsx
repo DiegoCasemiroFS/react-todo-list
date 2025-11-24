@@ -9,6 +9,7 @@ import { IconPlus, IconSchool } from "./components/icons"
 import { SubHeading } from "./components/SubHeading"
 import { ToDoItem } from "./components/ToDoItem"
 import { ToDoList } from "./components/ToDoList"
+import { useState } from "react"
 
 const todos = [
   {
@@ -53,6 +54,13 @@ const completed = [
 
 function App() {
 
+  const [showDialog, setShowDialog] = useState(false);
+
+  const toogleDialog = () => {
+    setShowDialog(!showDialog);
+  }
+
+
   return (
     <main>
       <Container>
@@ -76,7 +84,10 @@ function App() {
             })}
           </ToDoList>
           <Footer>
-            <FabButton>
+            <Dialog isOpen={showDialog} onClose={toogleDialog}>
+              <p>This modal dialog has a groovy backdrop!</p>
+            </Dialog>
+            <FabButton onClick={toogleDialog}>
               <IconPlus />
             </FabButton>
           </Footer>
