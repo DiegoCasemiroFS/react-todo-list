@@ -1,6 +1,6 @@
 ::backdrop {
     background-color: #504D4D;
-    opacity: 0.75;
+    opacity: 0.85;
 }
 
 .dialog {
@@ -18,4 +18,8 @@
     background-color: transparent;  
     border: none;
     cursor: pointer;
+}
+
+.dialog .body {
+    padding: 10px 0px;
 }

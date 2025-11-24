@@ -1,5 +1,6 @@
 import './dialog.style.css';
 import { useEffect, useRef } from 'react';
+import { IconClose } from "../icons";
 
 export function Dialog({ isOpen, onClose, children }) {
 
@@ -12,7 +13,7 @@ export function Dialog({ isOpen, onClose, children }) {
         } else {
             closeDialog();
         }
-    }, [isOpen, onClose]);
+    }, [isOpen]);
 
     const openDialog = () => {
         dialogRef.current.showModal();
@@ -34,7 +35,9 @@ export function Dialog({ isOpen, onClose, children }) {
                         <IconClose />
                     </button>
                 </div>
-                {children}
+                <div className="body">
+                    {children}
+                </div>
             </dialog>
         </>
     )
