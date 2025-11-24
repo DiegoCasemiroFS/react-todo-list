@@ -15,11 +15,11 @@
 }
 
 .btn-close {
-    background-color: transparent;  
+    background-color: transparent;
     border: none;
     cursor: pointer;
 }
 
 .dialog .body {
-    padding: 10px 0px;
+    padding: 10px 0;
 }
