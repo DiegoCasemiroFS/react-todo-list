@@ -5,7 +5,7 @@ import './todo-item.style.css';
 
 export function TodoItem({ item }) {
 
-    const { ToogleTodoCompleted, deleteTodo} = use(TodoContext);
+    const { toggleTodoCompleted, deleteTodo} = use(TodoContext);
     const styles = ['todo-item']
 
     if (item.completed) {
@@ -22,7 +22,7 @@ export function TodoItem({ item }) {
                     type="checkbox"
                     className="checkbox"
                     defaultChecked={item.completed}
-                    onClick={() => ToogleTodoCompleted(item)}
+                    onClick={() => toggleTodoCompleted(item)}
                 />
                 <p className="description">
                     {item.description}
